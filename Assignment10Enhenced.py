@@ -20,7 +20,9 @@ def is_same(target, number):
 print("######  숫자맞추기 게임 ######")
 
 com_number = random.randint(1, 100)
+cnt = 0
 while True:
+    cnt += 1
     user_number = int(input("1~100까지중 숫자 하나 입력 : "))
     game_result = is_same(com_number, user_number)
     if game_result == "Win":
@@ -28,3 +30,4 @@ while True:
         break
     else:
         print(game_result)
+print(f"{cnt}번 만에 성공")
