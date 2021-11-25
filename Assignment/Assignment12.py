@@ -4,13 +4,13 @@
 import turtle as t
 
 
-def draw_func(func: str, x_minimum):
-    x = x_min
+def draw_func(func: str, x_minimum, x_maximum, space=0.1):
+    x = x_minimum
     exec(func, None, locals())
     t.up()
     t.goto(x, locals()['y'])
     t.down()
-    while x <= x_max:
+    while x <= x_maximum:
         x += space
         exec(func, None, locals())
         t.goto(x, locals()['y'])
@@ -23,25 +23,24 @@ def draw_line(dest: tuple, src: tuple):
     t.goto(dest[0], dest[1])
 
 
-x_min = -5
-x_max = 5
-y_min = -5
-y_max = 5
-
-space = 0.1
+X_MIN = -5
+X_MAX = 5
+Y_MIN = -5
+Y_MAX = 5
+SPACE = 0.1
 
 functions: list[str] = ["y=x*x", "y=abs(x)", "y=0.5*x+1"]
 
-t.setworldcoordinates(x_min, y_min, x_max, y_max)
+t.setworldcoordinates(X_MIN, Y_MIN, X_MAX, Y_MAX)
 t.pensize(2)
 
 # Drawing axis
-draw_line((x_min, 0), (x_max, 0))
-draw_line((0, y_min), (0, y_max))
+draw_line((X_MIN, 0), (X_MAX, 0))
+draw_line((0, Y_MIN), (0, Y_MAX))
 
 t.color("green")
 
 for i in functions:
-    draw_func(i, x_min)
+    draw_func(i, X_MIN, X_MAX, SPACE)
 
 input()
