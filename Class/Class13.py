@@ -1,3 +1,6 @@
+# 컴퓨팅과데이터처리 13주차 과제
+# 2021024202 김관우
+
 import random
 import turtle as t
 
@@ -39,6 +42,7 @@ def play():
         score += 1
         speed += 2
         t.write(score)
+        repaint_score()
 
         stat_x = random.randint(-150, 150)
         stat_y = random.randint(-150, 150)
@@ -56,6 +60,12 @@ def start():
         playing = True
         t.clear()
         play()
+
+
+def repaint_score():
+    tc.clear()
+    tc.speed(0)
+    tc.write("Score : " + str(score), False, "center", ("", 20, 'normal'))
 
 
 score = 0
@@ -83,12 +93,18 @@ ts.speed(0)
 ts.up()
 ts.goto(0, -200)
 
+tc = t.Turtle()
+tc.hideturtle()
+tc.penup()
+tc.goto(-300, 350)
+tc.write("Score : " + str(score), False, "center", ("", 20, 'normal'))
+
 t.onkeypress(turn_right, "Right")
 t.onkeypress(turn_up, "Up")
 t.onkeypress(turn_left, "Left")
 t.onkeypress(turn_down, "Down")
 
-t.write("Press Space to start game", False, "center", ("", 20))
+t.write("Press Space to start game", False, "center", ("", 20 ))
 
 t.onkeypress(start, "space")
 
